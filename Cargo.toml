@@ -1,0 +1,10 @@
+[package]
+name = "tareas-gui"
+version = "0.1.0"
+edition = "2021"
+description = "TUI homework runner for Programación Avanzada — Cinvestav CS 2026"
+
+[dependencies]
+ratatui    = "0.30"
+crossterm  = "0.28"
+color-eyre = "0.6"

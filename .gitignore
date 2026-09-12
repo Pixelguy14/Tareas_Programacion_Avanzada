@@ -1,0 +1,4 @@
+/target/
+c_src/*.bin
+c_src/*.o
+*.o
