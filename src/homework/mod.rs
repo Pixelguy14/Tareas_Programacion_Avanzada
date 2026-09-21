@@ -39,20 +39,12 @@ pub fn registry() -> Vec<HomeworkEntry> {
             viz: VizKind::PlainText,
         },
         HomeworkEntry {
-            label: "Test_Stack — Visualización de Pila (LIFO)".into(),
-            src: PathBuf::from("c_src/Test_Stack.c"),
-            description: "Demo de una pila usando arreglo. Visualiza PUSH/POP en la GUI.\n\
-                           Temas: estructuras de datos, pilas, gestión de memoria estática."
+            label: "LIFO y FIFO en listas doblemente enlazadas".into(),
+            src: PathBuf::from("c_src/Tarea2.c"),
+            description: "Implementar funciones de estructura LIFO y FIFO para listas en C.\n\
+                           Temas: estructuras de datos, pilas, colas, manejo de índices."
                 .into(),
-            viz: VizKind::Stack,
-        },
-        HomeworkEntry {
-            label: "Test_Queue — Visualización de Cola circular (FIFO)".into(),
-            src: PathBuf::from("c_src/Test_Queue.c"),
-            description: "Demo de una cola circular. Visualiza ENQUEUE/DEQUEUE en la GUI.\n\
-                           Temas: estructuras de datos, colas, aritmética modular de índices."
-                .into(),
-            viz: VizKind::Queue,
+            viz: VizKind::PlainText,
         },
     ]
 }

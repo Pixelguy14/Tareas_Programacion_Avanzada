@@ -8,6 +8,30 @@ use ratatui::{
 
 use super::VizFrame;
 
+/// Parse the output of a stack C program into a sequence of animation frames.
+///
+/// Expected line format: `PUSH 40 | STACK: 10 20 30 40`
+pub fn parse_output(output: &str) -> Vec<VizFrame> {
+    let mut frames = vec![VizFrame {
+        operation: "Estado inicial".into(),
+        elements: vec![],
+    }];
+    for line in output.lines() {
+        if let Some((op_part, state_part)) = line.split_once(" | STACK:") {
+            let elements = state_part
+                .split_whitespace()
+                .filter_map(|s| s.parse::<i64>().ok())
+                .collect();
+            frames.push(VizFrame {
+                operation: op_part.trim().to_string(),
+                elements,
+            });
+        }
+    }
+    frames
+}
+
+
 /// Render a stack visualization.
 ///
 /// The stack is drawn from bottom (oldest) to top (newest), with the top

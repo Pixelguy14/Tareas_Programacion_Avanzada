@@ -13,14 +13,14 @@ use crate::{
 
 const TITLE: &str = " Programación Avanzada — Cinvestav CS 2026 ";
 const HELP_MENU: &str = " ↑↓/jk seleccionar  Enter ejecutar  q salir ";
-const HELP_OUTPUT: &str = " Esc/q volver al menú ";
+const HELP_OUTPUT: &str = " ↑↓/jk/PgUp/PgDn desplazar  Home inicio  Esc/q volver ";
 const HELP_VIZ: &str = " ←→/hl paso a paso  Home inicio  End final  Esc/q volver ";
 
 /// Main render dispatcher.
 pub fn render(frame: &mut Frame, app: &App) {
     match &app.screen {
         Screen::Menu => render_menu(frame, app),
-        Screen::Output { name, content } => render_output(frame, name, content),
+        Screen::Output { name, content, scroll } => render_output(frame, name, content, *scroll),
         Screen::Error { name, message } => render_error(frame, name, message),
         Screen::Visualization { name, frames, current } => {
             render_viz(frame, name, frames, *current, app)
@@ -87,7 +87,7 @@ fn render_menu(frame: &mut Frame, app: &App) {
 
 // ── Plain text output ─────────────────────────────────────────────────────────
 
-fn render_output(frame: &mut Frame, name: &str, content: &str) {
+fn render_output(frame: &mut Frame, name: &str, content: &str, scroll: u16) {
     let area = frame.area();
     let chunks = Layout::default()
         .direction(Direction::Vertical)
@@ -100,6 +100,7 @@ fn render_output(frame: &mut Frame, name: &str, content: &str) {
                 .borders(Borders::ALL)
                 .title(format!(" {name} ")),
         )
+        .scroll((scroll, 0))
         .wrap(Wrap { trim: false });
     frame.render_widget(p, chunks[0]);
 

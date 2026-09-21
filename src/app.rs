@@ -5,7 +5,7 @@ use crate::{
     homework::{registry, HomeworkEntry, VizKind},
     tui::Tui,
     ui,
-    viz::{parse_queue_output, parse_stack_output, VizFrame},
+    viz::VizFrame,
 };
 
 /// Which screen the application is currently showing.
@@ -16,6 +16,7 @@ pub enum Screen {
     Output {
         name: String,
         content: String,
+        scroll: u16,
     },
     /// Step-through visualization of a data structure.
     Visualization {
@@ -93,6 +94,31 @@ impl App {
             KeyCode::Esc | KeyCode::Char('q') | KeyCode::Backspace => {
                 self.screen = Screen::Menu;
             }
+            KeyCode::Up | KeyCode::Char('k') => {
+                if let Screen::Output { scroll, .. } = &mut self.screen {
+                    *scroll = scroll.saturating_sub(1);
+                }
+            }
+            KeyCode::Down | KeyCode::Char('j') => {
+                if let Screen::Output { scroll, .. } = &mut self.screen {
+                    *scroll = scroll.saturating_add(1);
+                }
+            }
+            KeyCode::PageUp => {
+                if let Screen::Output { scroll, .. } = &mut self.screen {
+                    *scroll = scroll.saturating_sub(10);
+                }
+            }
+            KeyCode::PageDown => {
+                if let Screen::Output { scroll, .. } = &mut self.screen {
+                    *scroll = scroll.saturating_add(10);
+                }
+            }
+            KeyCode::Home => {
+                if let Screen::Output { scroll, .. } = &mut self.screen {
+                    *scroll = 0;
+                }
+            }
             _ => {}
         }
     }
@@ -145,10 +171,11 @@ impl App {
                     self.screen = Screen::Output {
                         name,
                         content: output,
+                        scroll: 0,
                     };
                 }
                 VizKind::Stack => {
-                    let frames = parse_stack_output(&output);
+                    let frames = crate::viz::stack::parse_output(&output);
                     self.screen = Screen::Visualization {
                         name,
                         frames,
@@ -156,7 +183,7 @@ impl App {
                     };
                 }
                 VizKind::Queue => {
-                    let frames = parse_queue_output(&output);
+                    let frames = crate::viz::queue::parse_output(&output);
                     self.screen = Screen::Visualization {
                         name,
                         frames,
