@@ -73,6 +73,9 @@ gcc -O2 -march=native -o Tarea1.bin c_src/Tarea1.c && ./Tarea1.bin
 
 # Tarea 2 - LIFO y FIFO en lista doblemente enlazada
 gcc -o c_src/Tarea2.o c_src/Tarea2.c
+
+# Tarea 3 - Calculo de horner intrinsics usando precision simple
+g++ -O2 -march=native Tarea3.cpp -o Tarea3.bin
 ```
 
 ---

@@ -46,5 +46,13 @@ pub fn registry() -> Vec<HomeworkEntry> {
                 .into(),
             viz: VizKind::PlainText,
         },
+        HomeworkEntry {
+            label: "Calculo de horner intrinsics usando precision simple".into(),
+            src: PathBuf::from("c_src/Tarea3.cpp"),
+            description: "Implementar el programa original de clase reemplazando la lógica de Double a Float.\n\
+                           Temas: intrinsics, benchmarking, optimización de funciones."
+                .into(),
+            viz: VizKind::PlainText,
+        },
     ]
 }
