@@ -54,5 +54,13 @@ pub fn registry() -> Vec<HomeworkEntry> {
                 .into(),
             viz: VizKind::PlainText,
         },
+        HomeworkEntry {
+            label: "Ajuste de la tabla Hash vista en clase".into(),
+            src: PathBuf::from("c_src/Tarea4.cpp"),
+            description: "Implementar bien la tabla hash para aceptar colisiones, y si hay dos inserts con la misma clave, pero diferente valor, alojar en la lista de siguiente.\n\
+                           Temas: tablas Hash, algoritmos, manejo de colisiones."
+                .into(),
+            viz: VizKind::PlainText,
+        },
     ]
 }
