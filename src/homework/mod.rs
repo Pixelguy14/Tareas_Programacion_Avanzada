@@ -39,7 +39,7 @@ pub fn registry() -> Vec<HomeworkEntry> {
             viz: VizKind::PlainText,
         },
         HomeworkEntry {
-            label: "LIFO y FIFO en listas doblemente enlazadas".into(),
+            label: "Tarea2 - LIFO y FIFO en listas doblemente enlazadas".into(),
             src: PathBuf::from("c_src/Tarea2.c"),
             description: "Implementar funciones de estructura LIFO y FIFO para listas en C.\n\
                            Temas: estructuras de datos, pilas, colas, manejo de índices."
@@ -47,7 +47,7 @@ pub fn registry() -> Vec<HomeworkEntry> {
             viz: VizKind::PlainText,
         },
         HomeworkEntry {
-            label: "Calculo de horner intrinsics usando precision simple".into(),
+            label: "Tarea3 - Calculo de horner intrinsics usando precision simple".into(),
             src: PathBuf::from("c_src/Tarea3.cpp"),
             description: "Implementar el programa original de clase reemplazando la lógica de Double a Float.\n\
                            Temas: intrinsics, benchmarking, optimización de funciones."
@@ -55,10 +55,18 @@ pub fn registry() -> Vec<HomeworkEntry> {
             viz: VizKind::PlainText,
         },
         HomeworkEntry {
-            label: "Ajuste de la tabla Hash vista en clase".into(),
+            label: "Tarea4 - Ajuste de la tabla Hash vista en clase".into(),
             src: PathBuf::from("c_src/Tarea4.cpp"),
             description: "Implementar bien la tabla hash para aceptar colisiones, y si hay dos inserts con la misma clave, pero diferente valor, alojar en la lista de siguiente.\n\
                            Temas: tablas Hash, algoritmos, manejo de colisiones."
+                .into(),
+            viz: VizKind::PlainText,
+        },
+        HomeworkEntry {
+            label: "Tarea5 — Algoritmo genético (Rastrigin 2D)".into(),
+            src: PathBuf::from("c_src/Tarea5.c"),
+            description: "Minimizar la función de Rastrigin de dos variables con un algoritmo genético binario.\n\
+                           Temas: representación binaria, decodificación, cruza, mutación, selección."
                 .into(),
             viz: VizKind::PlainText,
         },

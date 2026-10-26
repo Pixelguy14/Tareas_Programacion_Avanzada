@@ -76,7 +76,34 @@ gcc -o c_src/Tarea2.o c_src/Tarea2.c
 
 # Tarea 3 - Calculo de horner intrinsics usando precision simple
 g++ -O2 -march=native Tarea3.cpp -o Tarea3.bin
+
+# Tarea 5 - Algoritmo genético para Rastrigin 2D
+gcc -O2 -march=native c_src/Tarea5.c -o Tarea5.bin -lm && ./Tarea5.bin
+
+# Tarea 6 - Codificador y decodificador de huffman con un header para el comprimido
+python3 py_src/tarea6_codificador.py py_src/origen.txt py_src/origen.huff
+
+python3 py_src/tarea6_decodificador.py py_src/origen.huff py_src/origen_recuperado.txt
 ```
+
+---
+
+## Tareas en Python
+
+### Tarea 6 — Compresor Huffman con formato propio
+
+El archivo `.huff` contiene un header de 35 bytes, el árbol de Huffman serializado
+y el payload comprimido. El decodificador reconstruye el árbol desde el propio
+archivo, así que no necesita el original ni una tabla de frecuencias externa.
+
+```bash
+cd py_src
+python3 tarea6_codificador.py origen.txt origen.huff
+python3 tarea6_decodificador.py origen.huff recuperado.txt
+cmp origen.txt recuperado.txt
+```
+
+El formato completo está documentado en el docstring de `tarea6_codificador.py`.
 
 ---
 

@@ -16,6 +16,8 @@ pub fn compile_and_run(src: &Path) -> Result<String, String> {
         .arg(src)
         .arg("-o")
         .arg(out_bin)
+        // Tarea5 usa cos() de <math.h>
+        .arg("-lm")
         .output()
         .map_err(|e| format!("Error ejecutando el compilador: {}", e))?;
 
