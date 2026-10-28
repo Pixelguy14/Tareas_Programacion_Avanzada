@@ -4,3 +4,8 @@ c_src/*.o
 *.o
 __pycache__/
 *.pyc
+
+# Generados al compilar Cython (Tarea 7)
+py_src/*.so
+py_src/*.c
+py_src/build/

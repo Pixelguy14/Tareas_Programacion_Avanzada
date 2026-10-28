@@ -63,7 +63,7 @@ cargo run --release
 
 ---
 
-## Compilar tareas C de forma independiente
+## Compilar tareas en C/Python de forma independiente
 
 Cada archivo `.c` en `c_src/` es autónomo y se puede compilar directamente:
 
@@ -84,26 +84,14 @@ gcc -O2 -march=native c_src/Tarea5.c -o Tarea5.bin -lm && ./Tarea5.bin
 python3 py_src/tarea6_codificador.py py_src/origen.txt py_src/origen.huff
 
 python3 py_src/tarea6_decodificador.py py_src/origen.huff py_src/origen_recuperado.txt
+
+cmp py_src/origen.txt py_src/recuperado.txt
+
+# Tarea 7 - Cython y Python comparación de Huffman
+python3 -m pip install -r py_src/requirements.txt # Instalar dependencias
+python3 py_src/setup_huffman_cython.py build_ext --inplace # Compilar la extensión Cython
+python3 py_src/benchmark_huffman.py # Comparar (repite origen.txt 5000 veces)
 ```
-
----
-
-## Tareas en Python
-
-### Tarea 6 — Compresor Huffman con formato propio
-
-El archivo `.huff` contiene un header de 35 bytes, el árbol de Huffman serializado
-y el payload comprimido. El decodificador reconstruye el árbol desde el propio
-archivo, así que no necesita el original ni una tabla de frecuencias externa.
-
-```bash
-cd py_src
-python3 tarea6_codificador.py origen.txt origen.huff
-python3 tarea6_decodificador.py origen.huff recuperado.txt
-cmp origen.txt recuperado.txt
-```
-
-El formato completo está documentado en el docstring de `tarea6_codificador.py`.
 
 ---
 
