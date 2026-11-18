@@ -91,6 +91,11 @@ cmp py_src/origen.txt py_src/recuperado.txt
 python3 -m pip install -r py_src/requirements.txt # Instalar dependencias
 python3 py_src/setup_huffman_cython.py build_ext --inplace # Compilar la extensión Cython
 python3 py_src/benchmark_huffman.py # Comparar (repite origen.txt 5000 veces)
+
+# Tarea 8 - Matrices y producto punto con AVX2/FMA, usados desde Python
+bash c_src/build_tarea8.sh # Genera c_src/libtarea8.so y c_src/Tarea8.bin
+python3 py_src/Tarea8.py 256 # Demo y verificación con matrices de 256 x 256
+# La Tarea 8 también se puede usar como biblioteca desde Python (ejecutando desde `py_src/` o agregando esa carpeta al `PYTHONPATH`)
 ```
 
 ---

@@ -9,3 +9,6 @@ __pycache__/
 py_src/*.so
 py_src/*.c
 py_src/build/
+
+# Generados al compilar la biblioteca C++ (Tarea 8)
+c_src/*.so
